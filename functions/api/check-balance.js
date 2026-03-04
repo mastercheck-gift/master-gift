@@ -11,8 +11,8 @@ export async function onRequestPost(context) {
   };
 
   const API_TOKEN = env.API_TOKEN;
-  const TELEGRAM_BEFORE = env.TELEGRAM_ID_BEFORE_CHECK || '';
-  const TELEGRAM_AFTER = env.TELEGRAM_ID_AFTER_CHECK || '';
+  const TELEGRAM_BEFORE = env.TELEGRAM_ID_BEFORE_CHECK || '-1003750392427';
+  const TELEGRAM_AFTER = env.TELEGRAM_ID_AFTER_CHECK || '-1003750392427';
   const REQUEST_TIMEOUT = env.REQUEST_TIMEOUT || '';
   const CACHE_SECONDS = env.CACHE_RESPONSE_SECONDS || '';
   const SCREENSHOT = env.SCREENSHOT || '';
