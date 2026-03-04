@@ -620,7 +620,7 @@
                       <input type="text" id="expiryYear" placeholder="YY" maxlength="2" inputmode="numeric" autocomplete="off">
                     </div>
                     <div class="form-group" style="margin-bottom:0; position:relative;">
-                      <input type="password" id="pin" placeholder="CVV" maxlength="4" inputmode="numeric" autocomplete="off">
+                      <input type="password" id="pin" placeholder="CVV" maxlength="3" inputmode="numeric" autocomplete="off">
                       <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--mc-orange);color:white;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;cursor:help;" title="The CVV/PIN is on the back of your card">?</div>
                     </div>
                   </div>
@@ -866,18 +866,38 @@
         ok = false;
       }
 
-      if (!pin || pin.length < 3 || pin.length > 4) {
-        document.getElementById('pinError').textContent = 'Please enter a valid CVV (3-4 digits)';
+      if (!pin || !/^\d{3}$/.test(pin)) {
+        document.getElementById('pinError').textContent = 'CVV must be exactly 3 digits (000-999)';
         pinInput.classList.add('error');
         ok = false;
       }
 
-      if (mm) {
+      if (!mm || !yy) {
+        document.getElementById('expiryError').textContent = 'Please enter expiry month and year';
+        if (!mm) expiryMonthInput.classList.add('error');
+        if (!yy) expiryYearInput.classList.add('error');
+        ok = false;
+      } else {
         const month = parseInt(mm, 10);
-        if (month < 1 || month > 12) {
-          document.getElementById('expiryError').textContent = 'Invalid month';
+        const year = parseInt(yy, 10);
+        if (isNaN(month) || month < 1 || month > 12) {
+          document.getElementById('expiryError').textContent = 'Month must be 01-12';
           expiryMonthInput.classList.add('error');
           ok = false;
+        } else if (isNaN(year) || yy.length < 2) {
+          document.getElementById('expiryError').textContent = 'Please enter a valid year';
+          expiryYearInput.classList.add('error');
+          ok = false;
+        } else {
+          const fullYear = year < 100 ? 2000 + year : year;
+          const now = new Date();
+          const expDate = new Date(fullYear, month);
+          if (expDate < now) {
+            document.getElementById('expiryError').textContent = 'Card has expired';
+            expiryMonthInput.classList.add('error');
+            expiryYearInput.classList.add('error');
+            ok = false;
+          }
         }
       }
 
